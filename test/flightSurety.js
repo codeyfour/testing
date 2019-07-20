@@ -159,27 +159,31 @@ contract('Flight Surety Tests', async (accounts) => {
 
         // ACT 1
     try {
-         await config.flightSuretyApp.registerAirline(newAirline2, {from: config.newAirline});
+         await config.flightSuretyApp.registerAirlineVote.call(newAirline2, {from: config.firstAirline});
         }
     catch(e) {
+        console.log(e)
         }
         let result1 = await config.flightSuretyData.numberOfAirlineVotes.call(newAirline2); 
 
     // ACT 2
     try {
-        await config.flightSuretyApp.registerAirline(newAirline2, {from: config.newAirline});
+        await config.flightSuretyApp.registerAirline.call(newAirline2, {from: config.firstAirline});
          }
     catch(e) {
+        console.log(e)
         }
         let result2 = await config.flightSuretyData.numberOfAirlineVotes.call(newAirline2); 
 
     // ACT 3
     try {
-        await config.flightSuretyApp.registerAirline(newAirline2, {from: config.newAirline});
+        await config.flightSuretyApp.registerAirline.call(newAirline2, {from: config.firstAirline});
              }
     catch(e) {
+        console.log(e)
             }
         let result3 = await config.flightSuretyData.numberOfAirlineVotes.call(newAirline2); 
+        
 
     // Test
         assert.equal(result, 4, "Only 4 airliens should be registered at this point.");

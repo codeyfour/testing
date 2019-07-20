@@ -25,7 +25,7 @@ interface FlightSuretyData {
     function isAirlineRegistered(address airline) external returns (bool);
     function isAirlineFunded(address airline) external returns (uint);
     function numberOfAirlines() external view returns (uint);
-    function registerAirlineVote(address airline) external;
+    function registerAirlineVote(address airline) external payable;
     function numberOfAirlineVotes(address airline) external view returns (uint);
 }
 
@@ -172,6 +172,9 @@ contract FlightSuretyApp {
         return true;  // Modify to call data contract's status
     }
 
+    function registerAirlineVote(address airline) external {
+        flightSuretyData.registerAirline(airline);
+    }
     /********************************************************************************************/
     /*                                     SMART CONTRACT FUNCTIONS                             */
     /********************************************************************************************/

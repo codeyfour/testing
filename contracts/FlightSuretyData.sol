@@ -98,7 +98,7 @@ contract FlightSuretyData {
         return ArrayOfAirlines.length;
     }
 
-    function registerAirlineVote(address airline) external {
+    function registerAirlineVote(address airline) external payable {
         supportFor[airline] = supportFor[airline] + 1;
     }
 
